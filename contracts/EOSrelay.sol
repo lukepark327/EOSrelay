@@ -1,5 +1,7 @@
 pragma solidity ^0.4.8;
 
+import "./StringUtils.sol";
+
 contract EOSrelay {
     /* Block index */
     uint256 public genesisBlockNumber;
@@ -57,12 +59,22 @@ contract EOSrelay {
     function isTrxInBlock(bytes32 blockHash, bytes32 trxHash)
     public
     constant
-    returns (bool){
+    returns (bool) {
         uint256 len = blocks[blockHash].trxHeaders.length;
         for(uint256 i=0; i<len; i++){
             if (blocks[blockHash].trxHeaders[i] == trxHash) {
                 return true;
             }
+        }
+        return false;
+    }
+    
+    function isAddressValid(bytes32 trxHash, string EOSLockingAddr)
+    public
+    constant
+    returns (bool) {
+        if (StringUtils.equal(trxs[trxHash]._to, EOSLockingAddr)) {
+            return true;
         }
         return false;
     }
