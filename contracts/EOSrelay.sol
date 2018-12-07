@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.4.8;
 
 contract EOSrelay {
     /* Block index */
@@ -23,7 +23,7 @@ contract EOSrelay {
     }
     mapping(bytes32 => Transaction) public trxs;    
     
-    constructor (uint256 blockNumber) public {
+    function EOSrelay (uint256 blockNumber) public {
         genesisBlockNumber = blockNumber;
         highestBlockNumber = blockNumber;
     }
@@ -78,11 +78,11 @@ contract EOSrelay {
     }
     */
     
-    function getTxRoot(bytes32 blockHash) public view returns (bytes32) {
+    function getTxRoot(bytes32 blockHash) public constant returns (bytes32) {
         return blocks[blockHash].txRoot;
     }
 
-    function getAxRoot(bytes32 blockHash) public view returns (bytes32) {
+    function getAxRoot(bytes32 blockHash) public constant returns (bytes32) {
         return blocks[blockHash].axRoot;
     }
 }
