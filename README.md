@@ -12,4 +12,5 @@
 
 ## References
 > https://github.com/KyberNetwork/peace-relay   
+> https://github.com/twodude/eos-dapp-dev   
 > https://github.com/k26dr/eth-eos-relay   
