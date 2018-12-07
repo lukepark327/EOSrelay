@@ -89,5 +89,5 @@ contract EOStoken is ERC20 {
     }
     
     // Non-payable unnamed function prevents Ether from being sent accidentally
-	function () public {}
+    function () public {}
 }
