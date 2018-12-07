@@ -23,6 +23,7 @@ contract EOSrelay {
     }
     mapping(bytes32 => Transaction) public trxs;    
     
+    /* EOSrelay */
     function EOSrelay (uint256 blockNumber) public {
         genesisBlockNumber = blockNumber;
         highestBlockNumber = blockNumber;
@@ -53,30 +54,18 @@ contract EOSrelay {
         blocks[blockHash].trxHeaders.push(trxHash);
     }
     
-    /*
-    function submitBlock(bytes32 blockHash, bytes memory context) public {
-        BlockHeader memory header = parseBlockHeader(context);
-        uint256 blockNumber = getBlockNumber(context);
-        
-        if (blockNumber > highestBlock) {
-            highestBlock = blockNumber;
+    function isTrxInBlock(bytes32 blockHash, bytes32 trxHash)
+    internal
+    constant
+    returns (bool){
+        uint256 len = blocks[blockHash].trxHeaders.length;
+        for(uint256 i=0; i<len; i++){
+            if (blocks[blockHash].trxHeaders[i] == trxHash) {
+                return true;
+            }
         }
-        
-        blocks[blockHash] = header;
+        return false;
     }
-    
-    function parseBlockHeader(bytes memory context) pure internal returns (BlockHeader memory header) {
-        "Todo: decoder";
-        
-        return header;
-    }
-    
-    function getBlockNumber(bytes memory context) pure internal returns (uint blockNumber) {
-        "Todo: decoder";
-        
-        blockNumber = 0;
-    }
-    */
     
     function getTxRoot(bytes32 blockHash) public constant returns (bytes32) {
         return blocks[blockHash].txRoot;
@@ -84,5 +73,9 @@ contract EOSrelay {
 
     function getAxRoot(bytes32 blockHash) public constant returns (bytes32) {
         return blocks[blockHash].axRoot;
+    }
+    
+    function gethHghestBlockNumber() public constant returns (uint256) {
+        return highestBlockNumber;
     }
 }
