@@ -1,6 +1,7 @@
 const args = require('yargs').argv;
 const fs = require('fs');
 
+// TODO: options 
 if (args.h) {
 	console.log("Usage: node relayd.js --address=<contract address> --abi=<abi path> [Options]");
 	console.log();
@@ -29,9 +30,7 @@ if (!fs.existsSync('../build/EOSrelay.abi')) {
 	process.exit(1);
 }
 
-// contract.methods['submitBlock(uint256,bytes)'](123123123, new Buffer("test")).send({from:"0x051977ed8e503d3140e3ae8ecc645b3c9245acc6", gas:2000000}).then(receipt => { console.log(receipt); console.log("!!"); }).catch(ex => { console.log(ex); console.log("??");} );
-
-let relayAbi = fs.readFileSync('../build/EOSrelay.abi').toString();
+const relayAbi = fs.readFileSync('../build/EOSrelay.abi').toString();
 
 const options = {
 	EOS_MAINNET_URL: 'https://api.eosnewyork.io',

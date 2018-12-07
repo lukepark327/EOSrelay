@@ -12,6 +12,8 @@ module.exports = function (options) {
 	const eosUrl = relayOptions.EOS_MAINNET_URL;
 	const interval = relayOptions.SLEEP_TIME;
 
+// contract.methods['submitBlock(uint256,bytes)'](123123123, new Buffer("test")).send({from:"0x051977ed8e503d3140e3ae8ecc645b3c9245acc6", gas:2000000}).then(receipt => { console.log(receipt); console.log("!!"); }).catch(ex => { console.log(ex); console.log("??");} );
+
 	function getBlockInfo (blockNum) {
 		return axios.post(eosUrl + '/v1/chain/get_block', { 'block_num_or_id':blockNum })
 			.then((result) => { return result.data; }).catch((ex) => { return -1; });
