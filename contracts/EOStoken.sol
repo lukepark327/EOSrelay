@@ -9,7 +9,7 @@ contract EOStoken is ERC20 {
     
     EOSrelay public relay;
     
-    address public EOSLockingAddr;
+    string public EOSLockingAddr;
     
     uint public totalSupply;
     mapping(address => mapping (address => uint)) allowed;
@@ -25,7 +25,7 @@ contract EOStoken is ERC20 {
         relay = EOSrelay(_EOSrelayAddr);
     }
     
-    function changeEOSLockingAddr(address _EOSLockingAddr) public {
+    function changeEOSLockingAddr(string _EOSLockingAddr) public {
         EOSLockingAddr = _EOSLockingAddr;
     }
     
@@ -34,6 +34,8 @@ contract EOStoken is ERC20 {
     public
     returns (bool) {
         if (relay.isTrxInBlock(blockHash, trxHash)) {
+            require(relay.isAddressValid(trxHash, EOSLockingAddr));
+            
             totalSupply = totalSupply.add(_value);
             balances[newAddress] = balances[newAddress].add(_value);
             
