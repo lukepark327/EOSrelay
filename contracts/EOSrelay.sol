@@ -55,7 +55,7 @@ contract EOSrelay {
     }
     
     function isTrxInBlock(bytes32 blockHash, bytes32 trxHash)
-    internal
+    public
     constant
     returns (bool){
         uint256 len = blocks[blockHash].trxHeaders.length;
