@@ -16,20 +16,28 @@ module.exports = function (options) {
 	// TODO: options type checkinig
 
 	function getBlockInfo (blockNum) {
-		return axios.post(eosUrl + '/v1/chain/get_block', { 'block_num_or_id':blockNum }).then((result) => { return result.data; }).catch((ex) => { return -1; });
+		return axios.post(eosUrl + '/v1/chain/get_block', { 'block_num_or_id':blockNum })
+			.then((result) => { return result.data; })
+			.catch((ex) => { return -1; });
 	}
 
 	async function getLastBlockHeight () {
 		// get latest number of block on eth contract
-		return contract.methods['getHighestBlockNumber()']().send({ from: account, gas: options.GAS }).then(highestBlockNumber => { return highestBlockNumber; }).catch( ex => { console.log(ex); });
+		return contract.methods['getHighestBlockNumber()']().send({ from: account, gas: options.GAS })
+			.then(highestBlockNumber => { return highestBlockNumber; })
+			.catch( ex => { console.log(ex); });
 	}
 
 	function submitBlock (blockHash, index, previous, txRoot, axRoot) {
-		contract.methods['submitBlock(bytes32,uint256,bytes32,bytes32,bytes32)'](new Buffer(blockHash), Number(index), new Buffer(previous), new Buffer(txRoot), new Buffer(axRoot)).send({ from: account, gas: options.GAS }).then(receipt => { console.log(receipt); }).catch( ex => { console.log(ex); });
+		contract.methods['submitBlock(bytes32,uint256,bytes32,bytes32,bytes32)'](new Buffer(blockHash), Number(index), new Buffer(previous), new Buffer(txRoot), new Buffer(axRoot)).send({ from: account, gas: options.GAS })
+			.then(receipt => { console.log(receipt); })
+			.catch( ex => { console.log(ex); });
 	}
 
 	function submitTrx (blockHash, trxHash, from, to, amount) {
-		contract.methods['submitTrx(bytes32,bytes32,string,string,uint256)'](new Buffer(blockHash), new Buffer(trxHash), from, to, amount).send({ from: account, gas: options.GAS }).then(receipt => { console.log(receipt); }).catch( ex => { console.log(ex); });
+		contract.methods['submitTrx(bytes32,bytes32,string,string,uint256)'](new Buffer(blockHash), new Buffer(trxHash), from, to, amount).send({ from: account, gas: options.GAS })
+			.then(receipt => { console.log(receipt); })
+			.catch( ex => { console.log(ex); });
 	}
 
 	function sleep (ms) {
@@ -45,7 +53,7 @@ module.exports = function (options) {
 					let blockInfo = await getBlockInfo(lastBlockHeight);
 					if (blockInfo != -1) {
 						submitBlock(blockInfo.id, blockInfo.block_num, blockInfo.previous, blockInfo.transaction_mroot, blockInfo.action_mroot);
-						blockInfo.transactions.forEach((element) => {	
+						_.forEach(blockInfo.transactions, (element) => {	
 							if (element.trx.transaction) {
 								submitTrx(blockInfo.id, element.trx.id, element.trx.transaction.actions[0].data.from, element.trx.transaction.actions[0].data.to, element.trx.transaction.actions[0].data.quantity);
 							} else {
