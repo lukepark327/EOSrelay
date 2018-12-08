@@ -24,15 +24,17 @@ if (args.h) {
 	process.exit(1);
 }
 
-// Validate options
+// Validate option keys
 Object.keys(args).forEach((element) => {
 	if (element == '_' || element == '$0') return;
-	if (!_.find(OPTIONS, element)) {
+	if (!_.includes(OPTIONS, element)) {
 		console.log('Usage: node relayd.js --address=<contract address> [options]');
 		console.log('Invalid option: ' + element);
 		process.exit(1);
 	}
 });
+
+// TODO: Option data type checking
 
 if (!args.address) {
 	console.log('Usage: node relayd.js --address=<contract address> [options]');
@@ -48,12 +50,12 @@ if (!fs.existsSync('../build/EOSrelay.abi')) {
 const relayAbi = fs.readFileSync('../build/EOSrelay.abi').toString();
 
 const options = {
-EOS_MAINNET_URL: (args.eospath)? args.eospath : 'https://api.eosnewyork.io',
+	EOS_MAINNET_URL: (args.eospath)? args.eospath : 'https://api.eosnewyork.io',
 	CHUNK_SIZE: (args.chunksize)? args.chunksize : 5,
 	SLEEP_TIME: (args.interval)? Number(args.interval) : 1000 * 60,
 	RELAY_ABI: relayAbi,
-	RELAY_ADDRESS: (args.address)? args.address : '0x0a4a4b39bb39b354cc8696757d88cfc856fab488',
-
+	RELAY_ADDRESS: '0x0a4a4b39bb39b354cc8696757d88cfc856fab488',	// it will be changed to args.address
+	GAS: (args.gas)? args.gas : '2000000'
 };
 
 require('./relay')(options).runRelay();
