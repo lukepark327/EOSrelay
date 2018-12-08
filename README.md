@@ -2,12 +2,16 @@
 [![solidity](https://img.shields.io/badge/solidity-0.4.21-brown.svg)](https://img.shields.io/badge/solidity-0.4.21-brown.svg)   
 
 # EOSrelay
-EOS-ETH Relay   
+EOSrelay
+*(EOS-ETH Relay)*
+is a system that allow of using EOS on Ethereum.   
 > [The 1st DApp Development Contest](https://medium.com/eosys/the-1st-dapp-contest-d2b714a90adc) Entry Work   
 > Based on [PeaceRelay](https://github.com/KyberNetwork/peace-relay)   
 
-## Abstract
+## Overview
 ![image_diagram](https://github.com/twodude/EOSrelay/blob/master/images/diagram.png)
+
+These contracts will be able to verify that the specific transaction is contained with a target block.   
 
 ## Todo
 ### Contract Side
