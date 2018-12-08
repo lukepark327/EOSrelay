@@ -2,6 +2,8 @@
 [![solidity](https://img.shields.io/badge/solidity-0.4.21-brown.svg)](https://img.shields.io/badge/solidity-0.4.21-brown.svg)   
 
 # EOSrelay
+![icon](https://github.com/twodude/EOSrelay/blob/master/images/icon.png)
+
 EOSrelay
 *(EOS-ETH Relay)*
 is a system that allow of using EOS on Ethereum.   
