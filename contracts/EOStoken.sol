@@ -60,7 +60,7 @@ contract EOStoken is ERC20 {
         // safeSub already has throw, so no need to throw
         balances[msg.sender] = balances[msg.sender].sub(_value);
         balances[_to] = balances[_to].add(_value);
-        emit Transfer(msg.sender, _to, _value);
+        
         return true;
     }
 
@@ -70,7 +70,7 @@ contract EOStoken is ERC20 {
         balances[_from] = balances[_from].sub(_value);
         allowed[_from][msg.sender] = allowance.sub(_value);
         balances[_to] = balances[_to].add(_value);
-        emit Transfer(_from, _to, _value);
+        
         return true;
     }
     
@@ -80,7 +80,7 @@ contract EOStoken is ERC20 {
     
     function approve(address _spender, uint _value) public returns (bool) {
         allowed[msg.sender][_spender] = _value;
-        emit Approval(msg.sender, _spender, _value);
+        
         return true;
     }
     
