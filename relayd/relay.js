@@ -29,7 +29,7 @@ module.exports = function (options) {
 	}
 
 	function submitTrx (blockHash, trxHash, from, to, amount) {
-		contract.methods['submitTrx(bytes32,bytes32,string,string,uint256)'](new Buffer(blockHash), new Buffer(trxHash), from, to, Number(amount)).send({ from: account, gas: options.GAS }).then(receipt => { console.log(receipt); }).catch( ex => { console.log(ex); });
+		contract.methods['submitTrx(bytes32,bytes32,string,string,uint256)'](new Buffer(blockHash), new Buffer(trxHash), from, to, amount).send({ from: account, gas: options.GAS }).then(receipt => { console.log(receipt); }).catch( ex => { console.log(ex); });
 	}
 
 	function sleep (ms) {

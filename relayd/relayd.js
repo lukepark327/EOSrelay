@@ -1,6 +1,9 @@
 const args = require('yargs').argv;
 const _ = require('lodash');
 const fs = require('fs');
+const Web3 = require('web3');
+const web3 = new Web3();
+
 const OPTIONS = [ 'address', 'gas', 'account', 'interval', 'chunksize', 'eospath', 'ethpath', 'h' ];
 
 if (args.h) {
@@ -41,6 +44,16 @@ Object.keys(args).forEach((element) => {
 if (!args.address || !args.account) {
 	console.log('Usage: node relayd.js --address=<contract address> --account=<account> [options]');
 	console.log('Show options: node relayd.js --h ');
+	process.exit(1);
+}
+
+if (!web3.utils.isAddress(args.address)) {
+	console.log('Contract address is wrong. please put contract address correctly.');
+	process.exit(1);
+}
+
+if (!web3.utils.isHexStrict(args.account)) {
+	console.log('Account must be hex value. such as 0xc1912..');
 	process.exit(1);
 }
 
