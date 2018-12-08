@@ -43,12 +43,12 @@ if (!args.address) {
 	process.exit(1);
 }
 
-if (!fs.existsSync('../build/EOSrelay.abi')) {
+if (!fs.existsSync('./abi/EOSrelay.abi')) {
 	console.log('abi file is required');
 	process.exit(1);
 }
 
-const relayAbi = fs.readFileSync('../build/EOSrelay.abi').toString();
+const relayAbi = fs.readFileSync('./abi/EOSrelay.abi').toString();
 
 const options = {
 	EOS_URL: (args.eospath)? args.eospath : 'https://api.eosnewyork.io',
