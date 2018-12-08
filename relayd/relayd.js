@@ -1,43 +1,59 @@
 const args = require('yargs').argv;
+const _ = require('lodash');
 const fs = require('fs');
+const OPTIONS = [ "address", "gas", "interval", "chunksize", "eospath", "h" ];
 
-// TODO: options 
 if (args.h) {
-	console.log("Usage: node relayd.js --address=<contract address> --abi=<abi path> [Options]");
+	console.log("Usage: node relayd.js --address=<contract address> [Options]");
 	console.log();
-	console.log("Options");
+	console.log("REQUIRED:");
 	console.log();
-	console.log("\t--interval=<relaying interval>");
-	console.log("\t\t: 컨트랙트를 호출하는 주기를 설정합니다.");
-	console.log("\t--chunksize=<chunk size>");
-	console.log("\t\t: 한번에 읽어오는 블록 개수를 설정합니다.");
-	console.log("\t--eospath=<eos network url>");
-	console.log("\t\t: eos 네트워크 정보를 설정합니다.");
-	console.log("\t--h");
-	console.log("\t\t: 도움말을 출력합니다.");
+	console.log("\t--address=<contract address> Contract address EOSrelay on ethereum");
+	console.log();
+	console.log("OPTIONS:");
+	console.log();
+	console.log("\t--gas=<gas> The gas used to call the contract");
+	console.log("\t--interval=<interval> Contract call interval (ms)");
+	console.log("\t--chunksize=<chunksize> Number of blocks read at one cycle (default: 5)");
+	console.log("\t--eospath=<network url> EOS network url (default: mainnet)");
+	console.log("\t--h Print help");
+	console.log();
+	console.log("DOCUMENT:");
+	console.log("\tGithub: https://github.com/twodude/EOSrelay");
 	console.log();
 	process.exit(1);
 }
 
-if (!args.address || !args.abi) {
-	console.log('Usage: node relayd.js --address=<contract address> --abi=<abi path>');
-	console.log('\tHelp: node relayd.js --h ');
+// Validate options
+Object.keys(args).forEach((element) => {
+	if (element == '_' || element == '$0') return;
+	if (!_.find(OPTIONS, element)) {
+		console.log('Usage: node relayd.js --address=<contract address> [options]');
+		console.log('Invalid option: ' + element);
+		process.exit(1);
+	}
+});
+
+if (!args.address) {
+	console.log('Usage: node relayd.js --address=<contract address> [options]');
+	console.log('Show options: node relayd.js --h ');
 	process.exit(1);
 }
 
 if (!fs.existsSync('../build/EOSrelay.abi')) {
-	console.log('You should compile contracts to get abi file.');
+	console.log('abi file is required');
 	process.exit(1);
 }
 
 const relayAbi = fs.readFileSync('../build/EOSrelay.abi').toString();
 
 const options = {
-	EOS_MAINNET_URL: 'https://api.eosnewyork.io',
-	CHUNK_SIZE: 5,
-	SLEEP_TIME: (args.interval)? Number(args.interval) : 1000 * 100,
+EOS_MAINNET_URL: (args.eospath)? args.eospath : 'https://api.eosnewyork.io',
+	CHUNK_SIZE: (args.chunksize)? args.chunksize : 5,
+	SLEEP_TIME: (args.interval)? Number(args.interval) : 1000 * 60,
 	RELAY_ABI: relayAbi,
-	RELAY_ADDRESS: '0x0a4a4b39bb39b354cc8696757d88cfc856fab488' // args.address
+	RELAY_ADDRESS: (args.address)? args.address : '0x0a4a4b39bb39b354cc8696757d88cfc856fab488',
+
 };
 
 require('./relay')(options).runRelay();
