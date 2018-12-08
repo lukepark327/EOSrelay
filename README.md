@@ -45,6 +45,16 @@ They only can get reward when the information they gave is verified.
 pragma solidity ^0.4.21;
 ```
 
+## Setup
+is basically the same as PeaceRelay
+
+### Pre-requisites
+There are 2 wallets needed: 1 that does the submitting of block headers,
+and another that will submit mint transactions for the smart contracts.
+
+### Contract deployment
+The contracts' codes can be found in the [./contracts](https://github.com/twodude/EOSrelay/tree/master/contracts) folder.
+
 ## Todo
 ### Contract Side
 * Implement ownable, pausable
