@@ -1,16 +1,16 @@
 const axios = require('axios');
 const Web3 = require('web3');
 const fs = require('fs');
-const web3 = new Web3('http://localhost:8545');
 
 module.exports = function (options) {
 	const relayOptions = options;
-	const contract = new web3.eth.Contract(JSON.parse(options.RELAY_ABI), options.RELAY_ADDRESS);
 	const relayAbi = relayOptions.RELAY_ABI;
 	const relayAddress = relayOptions.RELAY_ADDRESS;
 	const chunkSize = relayOptions.CHUNK_SIZE;
-	const eosUrl = relayOptions.EOS_MAINNET_URL;
+	const eosUrl = relayOptions.EOS_URL;
 	const interval = relayOptions.SLEEP_TIME;
+	const web3 = new Web3(options.ETHEREUM_URL);
+	const contract = new web3.eth.Contract(JSON.parse(options.RELAY_ABI), options.RELAY_ADDRESS);
 
 // contract.methods['submitBlock(uint256,bytes)'](123123123, new Buffer("test")).send({from:"0x051977ed8e503d3140e3ae8ecc645b3c9245acc6", gas:2000000}).then(receipt => { console.log(receipt); console.log("!!"); }).catch(ex => { console.log(ex); console.log("??");} );
 

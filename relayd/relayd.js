@@ -1,7 +1,7 @@
 const args = require('yargs').argv;
 const _ = require('lodash');
 const fs = require('fs');
-const OPTIONS = [ "address", "gas", "interval", "chunksize", "eospath", "h" ];
+const OPTIONS = [ "address", "gas", "interval", "chunksize", "eospath", "ethpath", "h" ];
 
 if (args.h) {
 	console.log("Usage: node relayd.js --address=<contract address> [Options]");
@@ -12,10 +12,11 @@ if (args.h) {
 	console.log();
 	console.log("OPTIONS:");
 	console.log();
-	console.log("\t--gas=<gas> The gas used to call the contract");
-	console.log("\t--interval=<interval> Contract call interval (ms)");
+	console.log("\t--gas=<gas> The gas used to call the contract (default: 200000)");
+	console.log("\t--interval=<interval> Contract call interval (ms, default: 60000)");
 	console.log("\t--chunksize=<chunksize> Number of blocks read at one cycle (default: 5)");
-	console.log("\t--eospath=<network url> EOS network url (default: mainnet)");
+	console.log("\t--eospath=<basepath> EOS network rpc basepath (default: https://api.eosnewyork.io)");
+	console.log("\t--ethpath=<basepath> Ethereum network rpc basepath (default: http://localhost:8545)");
 	console.log("\t--h Print help");
 	console.log();
 	console.log("DOCUMENT:");
@@ -50,12 +51,13 @@ if (!fs.existsSync('../build/EOSrelay.abi')) {
 const relayAbi = fs.readFileSync('../build/EOSrelay.abi').toString();
 
 const options = {
-	EOS_MAINNET_URL: (args.eospath)? args.eospath : 'https://api.eosnewyork.io',
+	EOS_URL: (args.eospath)? args.eospath : 'https://api.eosnewyork.io',
+	ETHEREUM_URL: (args.ethpath)? args.ethpath : 'http://localhost:8545',
 	CHUNK_SIZE: (args.chunksize)? args.chunksize : 5,
-	SLEEP_TIME: (args.interval)? Number(args.interval) : 1000 * 60,
+	SLEEP_TIME: (args.interval)? Number(args.interval) : 1000 * 60,	// 1 minute
 	RELAY_ABI: relayAbi,
 	RELAY_ADDRESS: '0x0a4a4b39bb39b354cc8696757d88cfc856fab488',	// it will be changed to args.address
-	GAS: (args.gas)? args.gas : '2000000'
+	GAS: (args.gas)? args.gas : '200000'
 };
 
 require('./relay')(options).runRelay();
