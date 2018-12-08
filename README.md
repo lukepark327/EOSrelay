@@ -2,6 +2,9 @@
 > EOS-ETH Relay :: based on PeaceRelay.  
 > [The 1st DApp Development Contest](https://medium.com/eosys/the-1st-dapp-contest-d2b714a90adc) Entry Work.
 
+## Abstract
+![image_diagram](https://github.com/twodude/EOSrelay/blob/master/images/diagram.png)
+
 ## Todo
 ### Contract Side
 * Implement ownable, pausable
