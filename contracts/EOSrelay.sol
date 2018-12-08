@@ -87,7 +87,7 @@ contract EOSrelay {
         return blocks[blockHash].axRoot;
     }
     
-    function gethHghestBlockNumber() public constant returns (uint256) {
+    function getHighestBlockNumber() public constant returns (uint256) {
         return highestBlockNumber;
     }
 }
