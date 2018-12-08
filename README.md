@@ -17,12 +17,22 @@ These contracts will be able to verify that the specific transaction is containe
 ### Contract Side
 * Implement ownable, pausable
 * 2-way-relay
-*(current 1-way: EOS->ETH)*
+*(current 1-way: EOS -> ETH)*
 
 ### Daemon Side
 * Add & validate relay options
 * Support data retrieve from multiple EOS nodes
 * Support desktop user interface (GUI application) 
+
+## Milestones
+- Start Date:
+*Nov 21, 2018*   
+- MVP running (EOS -> ETH):
+*Dec 7, 2018*   
+- Add features (ownable, pausable, etc.)   
+- Complete MVP Development (EOS <-> ETH)   
+- End Date:
+*Not decided yet.*
 
 ## References
 > https://github.com/KyberNetwork/peace-relay   
