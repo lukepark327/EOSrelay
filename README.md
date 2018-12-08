@@ -30,7 +30,7 @@ These contracts will be able to verify that the specific transaction is containe
 - MVP running (EOS -> ETH):
 *Dec 7, 2018*   
 - Add features (ownable, pausable, etc.)   
-- Complete MVP Development (EOS <-> ETH)   
+- Complete Prototype Development (EOS <-> ETH)   
 - **End Date:**
 *Not decided yet.*
 
