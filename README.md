@@ -11,6 +11,7 @@
 ### Daemon Side
 * Add & validate relay options
 * Support data retrieve from multiple EOS nodes
+* Support desktop user interface (GUI application) 
 
 ## References
 > https://github.com/KyberNetwork/peace-relay   
