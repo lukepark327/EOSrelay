@@ -2,8 +2,9 @@
 [![solidity](https://img.shields.io/badge/solidity-0.4.21-brown.svg)](https://img.shields.io/badge/solidity-0.4.21-brown.svg)   
 
 # EOSrelay
-> EOS-ETH Relay :: based on PeaceRelay.  
-> [The 1st DApp Development Contest](https://medium.com/eosys/the-1st-dapp-contest-d2b714a90adc) Entry Work.
+EOS-ETH Relay   
+> [The 1st DApp Development Contest](https://medium.com/eosys/the-1st-dapp-contest-d2b714a90adc) Entry Work
+> Based on [PeaceRelay](https://github.com/KyberNetwork/peace-relay)   
 
 ## Abstract
 ![image_diagram](https://github.com/twodude/EOSrelay/blob/master/images/diagram.png)
