@@ -48,7 +48,7 @@ if (!args.address || !args.account) {
 }
 
 if (!web3.utils.isAddress(args.address)) {
-	console.log('Contract address is wrong. please put contract address correctly.');
+	console.log('Contract address is wrong. Please enter the correct address.');
 	process.exit(1);
 }
 
