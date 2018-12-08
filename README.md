@@ -1,5 +1,6 @@
 # EOSrelay
-> EOS-ETH Relay :: based on PeaceRelay
+> EOS-ETH Relay :: based on PeaceRelay.  
+> [The 1st DApp Development Contest](https://medium.com/eosys/the-1st-dapp-contest-d2b714a90adc) Entry Work.
 
 ## Todo
 ### Contract Side
