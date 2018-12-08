@@ -13,6 +13,14 @@ is a system that allow of using EOS on Ethereum.
 
 These contracts will be able to verify that the specific transaction is contained with a target block.   
 
+## Details
+
+## Environments
+* Solidity v0.4.21   
+```
+pragma solidity ^0.4.21;
+```
+
 ## Todo
 ### Contract Side
 * Implement ownable, pausable
