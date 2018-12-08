@@ -3,7 +3,7 @@
 
 # EOSrelay
 EOS-ETH Relay   
-> [The 1st DApp Development Contest](https://medium.com/eosys/the-1st-dapp-contest-d2b714a90adc) Entry Work
+> [The 1st DApp Development Contest](https://medium.com/eosys/the-1st-dapp-contest-d2b714a90adc) Entry Work   
 > Based on [PeaceRelay](https://github.com/KyberNetwork/peace-relay)   
 
 ## Abstract
