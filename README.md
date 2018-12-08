@@ -8,6 +8,15 @@ is a system that allow of using EOS on Ethereum.
 > [The 1st DApp Development Contest](https://medium.com/eosys/the-1st-dapp-contest-d2b714a90adc) Entry Work   
 > Based on [PeaceRelay](https://github.com/KyberNetwork/peace-relay)   
 
+## Abstract
+EOSrelay is an EOS–ETH relaying smart contract DApp. EOSrelay allows EOS holders to use DApps based on Ethereum eco-system, written in Solidity(or et al.).
+
+**Certain blockchain’s (blockchain system of currency that user is holding)**
+information, such as block and transaction information, is verified on
+**Target Blockchain (blockchain that user want to use)**
+eco-system Platform.
+For EOSrelay, EOS’s block and transaction information is verified on Ethereum platform. And the information (mostly the EOS block header) is submitted by relayers.
+
 ## Overview
 ![image_diagram](https://github.com/twodude/EOSrelay/blob/master/images/diagram.png)
 
@@ -17,9 +26,9 @@ refers to the [article](https://medium.com/@loiluu/peacerelay-connecting-the-man
 As you know, each block header contains committed transactions. Given a block header, anyone will be able to verify if a transaction is included or not. Now we can offer a transfer services from ```EOS``` to ```ETH```.
 
 ## Details
-1. Trx1 is contained into Block. Trx 1 is a locking transaction that sending EOS to certain account (called EOSLockingAddr).   
-2. Relayer register the header information of the Block (one that contains Tx1) on Ethereum smart contract.   
-3. All the verification processes are executed by smart contract, whether the Tx1 is contained in Block and locking transaction is sent properly.   
+1. Tx1 is occurred and included in Block. Tx1 is a locking transaction that sending EOS to certain account.   
+2. Relayer registers the header information of the Block (one that include Tx1) on Ethereum.   
+3. All the verification processes are executed by smart contract, whether the Tx1 is involved in Block and locking transaction is sent properly.   
 4. If the Tx1 is confirmed as verified one, same amount of token is minted on Ethereum.
 
 ## Environments
