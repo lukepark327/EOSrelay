@@ -23,19 +23,22 @@ module.exports = function (options) {
 
 	async function getLastBlockHeight () {
 		// get latest number of block on eth contract
-		return contract.methods['getHighestBlockNumber()']().send({ from: account, gas: options.GAS })
+		return contract.methods['getHighestBlockNumber()']()
+			.send({ from: account, gas: options.GAS })
 			.then(highestBlockNumber => { return highestBlockNumber; })
 			.catch( ex => { console.log(ex); });
 	}
 
 	function submitBlock (blockHash, index, previous, txRoot, axRoot) {
-		contract.methods['submitBlock(bytes32,uint256,bytes32,bytes32,bytes32)'](new Buffer(blockHash), Number(index), new Buffer(previous), new Buffer(txRoot), new Buffer(axRoot)).send({ from: account, gas: options.GAS })
+		contract.methods['submitBlock(bytes32,uint256,bytes32,bytes32,bytes32)'](new Buffer(blockHash), Number(index), new Buffer(previous), new Buffer(txRoot), new Buffer(axRoot))
+			.send({ from: account, gas: options.GAS })
 			.then(receipt => { console.log(receipt); })
 			.catch( ex => { console.log(ex); });
 	}
 
 	function submitTrx (blockHash, trxHash, from, to, amount) {
-		contract.methods['submitTrx(bytes32,bytes32,string,string,uint256)'](new Buffer(blockHash), new Buffer(trxHash), from, to, amount).send({ from: account, gas: options.GAS })
+		contract.methods['submitTrx(bytes32,bytes32,string,string,uint256)'](new Buffer(blockHash), new Buffer(trxHash), from, to, amount)
+			.send({ from: account, gas: options.GAS })
 			.then(receipt => { console.log(receipt); })
 			.catch( ex => { console.log(ex); });
 	}
