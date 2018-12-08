@@ -9,7 +9,8 @@
 *(current 1-way: EOS->ETH)*
 
 ### Daemon Side
-* Doing a README
+* Add & validate relay options
+* Support data retrieve from multiple EOS nodes
 
 ## References
 > https://github.com/KyberNetwork/peace-relay   
