@@ -1,3 +1,6 @@
+[![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![solidity](https://img.shields.io/badge/solidity-0.4.21-brown.svg)](https://img.shields.io/badge/solidity-0.4.21-brown.svg)   
+
 # EOSrelay
 > EOS-ETH Relay :: based on PeaceRelay.  
 > [The 1st DApp Development Contest](https://medium.com/eosys/the-1st-dapp-contest-d2b714a90adc) Entry Work.
@@ -23,3 +26,8 @@
 
 ## License
 The EOSrelay project is licensed under the [Apache License, Version 2.0](https://opensource.org/licenses/Apache-2.0), also included in our repository in the [LICENSE](https://github.com/twodude/EOSrelay) file.
+
+## Designed by
+[@Luke Park](https://github.com/twodude)   
+[@Keunhak Lim](https://github.com/limkeunhak)   
+[@Minseo Park](https://github.com/finchparker)   
