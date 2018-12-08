@@ -17,3 +17,6 @@
 > https://github.com/KyberNetwork/peace-relay   
 > https://github.com/twodude/eos-dapp-dev   
 > https://github.com/k26dr/eth-eos-relay   
+
+## License
+The EOSrelay project is licensed under the [Apache License, Version 2.0](https://opensource.org/licenses/Apache-2.0), also included in our repository in the [LICENSE](https://github.com/twodude/EOSrelay) file.
