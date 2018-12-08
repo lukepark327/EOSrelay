@@ -11,9 +11,16 @@ is a system that allow of using EOS on Ethereum.
 ## Overview
 ![image_diagram](https://github.com/twodude/EOSrelay/blob/master/images/diagram.png)
 
-These contracts will be able to verify that the specific transaction is contained with a target block.   
+*"There is an Ethereum smart contract that stores all ```EOS``` block headers relayed/submitted by users, or relayers."*
+refers to the [article](https://medium.com/@loiluu/peacerelay-connecting-the-many-ethereum-blockchains-22605c300ad3) of Lou Luu in KyberNetwork.
+
+As you know, each block header contains committed transactions. Given a block header, anyone will be able to verify if a transaction is included or not. Now we can offer a transfer services from ```EOS``` to ```ETH```.
 
 ## Details
+1. Trx1 is contained into Block. Trx 1 is a locking transaction that sending EOS to certain account (called EOSLockingAddr).   
+2. Relayer register the header information of the Block (one that contains Tx1) on Ethereum smart contract.   
+3. All the verification processes are executed by smart contract, whether the Tx1 is contained in Block and locking transaction is sent properly.   
+4. If the Tx1 is confirmed as verified one, same amount of token is minted on Ethereum.
 
 ## Environments
 * Solidity v0.4.21   
