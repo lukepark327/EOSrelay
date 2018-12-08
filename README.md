@@ -31,6 +31,14 @@ As you know, each block header contains committed transactions. Given a block he
 3. All the verification processes are executed by smart contract, whether the Tx1 is involved in Block and locking transaction is sent properly.   
 4. If the Tx1 is confirmed as verified one, same amount of token is minted on Ethereum.
 
+Users can use DApps based on different blockchain eco-system by using EOSrelay.
+For now, it is specialized at connecting EOS to ETH.
+And also, users can get experience advantages of both Ethereum and EOS.
+
+Relayers can get fee as reward for submitting the block header to EOSrelay.
+But relayers can’t get reward just for submitting information to smart contract.
+They only can get reward when the information they gave is verified.
+
 ## Environments
 * Solidity v0.4.21   
 ```
