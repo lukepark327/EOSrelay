@@ -87,6 +87,7 @@ The contracts' codes can be found in the [./contracts](https://github.com/twodud
 [@Luke Park](https://github.com/twodude)   
 [@Keunhak Lim](https://github.com/limkeunhak)   
 [@Minseo Park](https://github.com/finchparker)   
+[@Jiwon Heo](https://github.com/hanante)
 
 ## License
 The EOSrelay project is licensed under the [Apache License, Version 2.0](https://opensource.org/licenses/Apache-2.0), also included in our repository in the [LICENSE](https://github.com/twodude/EOSrelay) file.
