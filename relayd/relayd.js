@@ -1,26 +1,27 @@
 const args = require('yargs').argv;
 const _ = require('lodash');
 const fs = require('fs');
-const OPTIONS = [ "address", "gas", "interval", "chunksize", "eospath", "ethpath", "h" ];
+const OPTIONS = [ 'address', 'gas', 'account', 'interval', 'chunksize', 'eospath', 'ethpath', 'h' ];
 
 if (args.h) {
-	console.log("Usage: node relayd.js --address=<contract address> [Options]");
+	console.log('Usage: node relayd.js --address=<contract address> --account=<account> [Options]');
 	console.log();
-	console.log("REQUIRED:");
+	console.log('REQUIRED:');
 	console.log();
-	console.log("\t--address=<contract address> Contract address EOSrelay on ethereum");
+	console.log('\t--address=<contract address> Contract address EOSrelay on ethereum');
+	console.log('\t--account=<account> Ethereum account');
 	console.log();
-	console.log("OPTIONS:");
+	console.log('OPTIONS:');
 	console.log();
-	console.log("\t--gas=<gas> The gas used to call the contract (default: 200000)");
-	console.log("\t--interval=<interval> Contract call interval (ms, default: 60000)");
-	console.log("\t--chunksize=<chunksize> Number of blocks read at one cycle (default: 5)");
-	console.log("\t--eospath=<basepath> EOS network rpc basepath (default: https://api.eosnewyork.io)");
-	console.log("\t--ethpath=<basepath> Ethereum network rpc basepath (default: http://localhost:8545)");
-	console.log("\t--h Print help");
+	console.log('\t--gas=<gas> The gas used to call the contract (default: 200000)');
+	console.log('\t--interval=<interval> Contract call interval (ms, default: 60000)');
+	console.log('\t--chunksize=<chunksize> Number of blocks read at one cycle (default: 5)');
+	console.log('\t--eospath=<basepath> EOS network rpc basepath (default: https://api.eosnewyork.io)');
+	console.log('\t--ethpath=<basepath> Ethereum network rpc basepath (default: http://localhost:8545)');
+	console.log('\t--h Print help');
 	console.log();
-	console.log("DOCUMENT:");
-	console.log("\tGithub: https://github.com/twodude/EOSrelay");
+	console.log('DOCUMENT:');
+	console.log('\tGithub: https://github.com/twodude/EOSrelay');
 	console.log();
 	process.exit(1);
 }
@@ -29,7 +30,7 @@ if (args.h) {
 Object.keys(args).forEach((element) => {
 	if (element == '_' || element == '$0') return;
 	if (!_.includes(OPTIONS, element)) {
-		console.log('Usage: node relayd.js --address=<contract address> [options]');
+		console.log('Usage: node relayd.js --address=<contract address> --account=<account> [options]');
 		console.log('Invalid option: ' + element);
 		process.exit(1);
 	}
@@ -37,8 +38,8 @@ Object.keys(args).forEach((element) => {
 
 // TODO: Option data type checking
 
-if (!args.address) {
-	console.log('Usage: node relayd.js --address=<contract address> [options]');
+if (!args.address || !args.account) {
+	console.log('Usage: node relayd.js --address=<contract address> --account=<account> [options]');
 	console.log('Show options: node relayd.js --h ');
 	process.exit(1);
 }
@@ -56,7 +57,8 @@ const options = {
 	CHUNK_SIZE: (args.chunksize)? args.chunksize : 5,
 	SLEEP_TIME: (args.interval)? Number(args.interval) : 1000 * 60,	// 1 minute
 	RELAY_ABI: relayAbi,
-	RELAY_ADDRESS: '0x0a4a4b39bb39b354cc8696757d88cfc856fab488',	// it will be changed to args.address
+	RELAY_ADDRESS: args.address,
+	USER_ACCOUNT: args.account,
 	GAS: (args.gas)? args.gas : '200000'
 };
 
