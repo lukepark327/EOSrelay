@@ -2,7 +2,7 @@
 [![solidity](https://img.shields.io/badge/solidity-0.4.21-brown.svg)](https://img.shields.io/badge/solidity-0.4.21-brown.svg)   
 
 # EOSrelay
-![icon](https://github.com/twodude/EOSrelay/blob/master/images/icon.png)
+![icon](https://github.com/twodude/EOSrelay/blob/master/images/icon_EOSrelay.png)
 
 EOSrelay
 *(EOS-ETH Relay)*
