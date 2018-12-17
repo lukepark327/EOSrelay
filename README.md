@@ -79,9 +79,9 @@ The contracts' codes can be found in the [./contracts](https://github.com/twodud
 *Not decided yet.*
 
 ## References
-> https://github.com/KyberNetwork/peace-relay   
-> https://github.com/twodude/eos-dapp-dev   
-> https://github.com/k26dr/eth-eos-relay   
+- https://github.com/KyberNetwork/peace-relay   
+- https://github.com/twodude/eos-dapp-dev   
+- https://github.com/k26dr/eth-eos-relay   
 
 ## Designed by
 [@Luke Park](https://github.com/twodude)   
